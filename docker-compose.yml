@@ -4,8 +4,6 @@ services:
     app:
         build: ./src
         restart: always
-        env_file:
-            - ./src/.env
         expose:
             - 3000
         command: node index.js
