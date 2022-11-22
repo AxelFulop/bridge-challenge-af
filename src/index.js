@@ -25,6 +25,8 @@ const ssmClient = new AWS.SSM({
     region: 'us-east-1'
 });
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 async function getParameter(parameterName) {
     try {
         const { Parameter } = await ssmClient
