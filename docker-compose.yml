@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    app:
+        build: ./src
+        restart: always
+        env_file:
+            - ./src/.env
+        expose:
+            - 3000
+        command: node index.js
+        volumes:
+            - .:/src
+    nginx:
+        build: ./nginx
+        ports:
+            - 80:80
+        depends_on:
+            - app
+        volumes:
+            - .:/nginx
